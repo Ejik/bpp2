@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/bpp">
+        <file>res/print1.ico</file>
+        <file>res/logo.jpg</file>
+        <file>res/app.ico</file>
+        <file>res/help.ico</file>
+        <file>res/info.ico</file>
+    </qresource>
+</RCC>

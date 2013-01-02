@@ -20,11 +20,13 @@ DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 SOURCES += main.cpp\
         mainwindow.cpp \
     aboutview.cpp \
-    acotcore.cpp
+    acotcore.cpp \
+    importer.cpp
 
 HEADERS  += mainwindow.h \
     aboutview.h \
-    acotcore.h
+    acotcore.h \
+    importer.h
 
 FORMS    += mainwindow.ui \
     aboutview.ui

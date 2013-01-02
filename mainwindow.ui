@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>640</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="font">
@@ -22,13 +22,19 @@
    <iconset resource="bppax.qrc">
     <normaloff>:/bpp/res/app.ico</normaloff>:/bpp/res/app.ico</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTableView" name="tableView"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>640</width>
      <height>21</height>
     </rect>
    </property>
@@ -70,7 +76,14 @@
    <addaction name="actionPrint"/>
    <addaction name="actionAbout"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="font">
+    <font>
+     <family>Play</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
   <action name="actionExit">
    <property name="text">
     <string>Выход</string>

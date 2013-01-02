@@ -26,6 +26,7 @@ AboutView::AboutView(QWidget *parent) :
 
     setWindowFlags(Qt::Tool);
 
+    activateWindow();
 }
 
 AboutView::~AboutView()

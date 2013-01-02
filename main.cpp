@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QApplication>
 #include <QTextCodec>
-
+#include "importer.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +12,10 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     // Setting the Application version
     a.setApplicationVersion(APP_VERSION);
+
+    Importer importer;
+    importer.ImportData();
+
 
     MainWindow w;
 

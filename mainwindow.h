@@ -20,6 +20,16 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    void CloseApp();
+    void CreateBlank();
+    void PrintBlank();
+
+    void on_actionCreateBlank_triggered();
+
+    void on_actionPrint_triggered();
+
+    void on_actionHelp_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

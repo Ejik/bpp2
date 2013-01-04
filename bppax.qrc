@@ -5,5 +5,7 @@
         <file>res/app.ico</file>
         <file>res/help.ico</file>
         <file>res/info.ico</file>
+        <file>res/excel.ico</file>
+        <file>template.xls</file>
     </qresource>
 </RCC>

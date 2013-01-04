@@ -21,12 +21,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     aboutview.cpp \
     acotcore.cpp \
-    importer.cpp
+    importer.cpp \
+    tablemodel.cpp \
+    f112.cpp
 
 HEADERS  += mainwindow.h \
     aboutview.h \
     acotcore.h \
-    importer.h
+    importer.h \
+    tablemodel.h \
+    f112.h
 
 FORMS    += mainwindow.ui \
     aboutview.ui
@@ -38,3 +42,6 @@ OTHER_FILES += \
       bppax.rc
 
 #RC_FILE = bppax.rc
+
+LIBS += -lqaxserver \
+        -lqaxcontainer

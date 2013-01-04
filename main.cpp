@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QDebug>
 #include <QApplication>
+#include <QStandardItemModel>
 #include <QTextCodec>
 #include "importer.h"
 
@@ -14,13 +15,12 @@ int main(int argc, char *argv[])
     a.setApplicationVersion(APP_VERSION);
 
     Importer importer;
-    importer.ImportData();
+    QStandardItemModel *model = importer.ImportData();
 
 
     MainWindow w;
-
+    w.SetModel(model);
     w.show();
-
 
     return a.exec();
 }

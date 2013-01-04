@@ -1,6 +1,7 @@
 #ifndef IMPORTER_H
 #define IMPORTER_H
 
+#include <QStandardItemModel>
 #include <QObject>
 
 class Importer : public QObject
@@ -8,7 +9,7 @@ class Importer : public QObject
     Q_OBJECT
 public:
     explicit Importer(QObject *parent = 0);
-    void ImportData();
+    QStandardItemModel *ImportData();
 
 signals:
     

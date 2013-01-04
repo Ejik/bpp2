@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "aboutview.h"
+#include "f112.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -36,11 +37,13 @@ MainWindow::MainWindow(QWidget *parent) :
     shortcut = new QShortcut(QKeySequence(tr("Return")), ui->tableView);
     connect(shortcut, SIGNAL(activated()), this, SLOT(CreateBlank()));
 
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete model_;
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -72,11 +75,15 @@ void MainWindow::CloseApp()
 void MainWindow::CreateBlank()
 {
     ui->statusBar->showMessage(tr("Выполняется обработка"));
+
+    F112 f112;
+    f112.CreateF112(model_, ui->tableView->currentIndex(), false);
 }
 
 void MainWindow::PrintBlank()
 {
-    close();
+    F112 f112;
+    f112.CreateF112(model_, ui->tableView->currentIndex(), true);
 }
 
 void MainWindow::on_actionHelp_triggered()
@@ -84,4 +91,25 @@ void MainWindow::on_actionHelp_triggered()
     QString exe = QDir::toNativeSeparators(QDir::currentPath() + "//bpp.chm");
 
     QDesktopServices::openUrl(QUrl::fromLocalFile(exe));
+}
+
+void MainWindow::SetModel(QStandardItemModel *model)
+{
+    this->model_ = model;
+
+    // данные
+    ui->tableView->setModel(model_);
+
+    int cols_count = model_->columnCount();
+    for (int i = 0; i < cols_count; i++)
+    {
+        if ((i == 0) || (i == 1) || (i == 4) || (i == cols_count - 1))
+        {
+        }
+        else
+            ui->tableView->setColumnHidden(i, true);
+    }
+
+    ui->tableView->resizeColumnsToContents();
+
 }

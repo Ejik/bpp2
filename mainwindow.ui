@@ -6,13 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>700</width>
     <height>480</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <family>Play</family>
+    <pointsize>10</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -25,7 +26,20 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTableView" name="tableView"/>
+     <widget class="QTableView" name="tableView">
+      <property name="font">
+       <font>
+        <family>Play</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -34,7 +48,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>640</width>
+     <width>700</width>
      <height>21</height>
     </rect>
    </property>
@@ -63,6 +77,11 @@
    <addaction name="menu_3"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonTextUnderIcon</enum>
    </property>
@@ -122,6 +141,10 @@
    </property>
   </action>
   <action name="actionCreateBlank">
+   <property name="icon">
+    <iconset resource="bppax.qrc">
+     <normaloff>:/bpp/res/excel.ico</normaloff>:/bpp/res/excel.ico</iconset>
+   </property>
    <property name="text">
     <string>Формирование бланка</string>
    </property>

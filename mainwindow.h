@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void SetModel(QStandardItemModel *model);
     
 private slots:
     void on_actionExit_triggered();
@@ -32,6 +34,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    QStandardItemModel *model_;
 };
 
 #endif // MAINWINDOW_H

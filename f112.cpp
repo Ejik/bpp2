@@ -19,19 +19,28 @@ F112::~F112()
 void F112::CreateF112(QStandardItemModel * model, QModelIndex current_index, bool on_print)
 {
     CreateBlank(model, current_index);
-    if (on_print)  {
 
+    model->setItem(current_index.row(), model->columnCount() - 1 , new QStandardItem(QObject::tr("Сформирован")));
+
+    if (on_print)  {
 
         excel_->setProperty("DisplayAlerts", "0");
         QAxObject* workbooks = excel_->querySubObject( "Workbooks" );
         QAxObject* workbook = workbooks->querySubObject( "Open(const QString&)", new_filename_ );
         QAxObject* sheets = workbook->querySubObject( "Worksheets" );
         QAxObject *sheet1 = sheets->querySubObject( "Item(const QVariant&)", QVariant("page1") );
-        sheet1->dynamicCall("PrintOut()");
-
         QAxObject *sheet2 = sheets->querySubObject( "Item(const QVariant&)", QVariant("page2") );
+
         sheet1->dynamicCall("PrintOut()");
 
+        int r = QMessageBox::question(0, QObject::tr("Excel"),
+                        QObject::tr("Печатать следующую страницу?"),
+                        QMessageBox::Yes|QMessageBox::Default,
+                        QMessageBox::No|QMessageBox::Escape);
+        if (r == QMessageBox::Yes) {
+
+            sheet1->dynamicCall("PrintOut()");
+        }
         excel_->dynamicCall("Quit()");
 
         delete sheet1;
@@ -39,6 +48,8 @@ void F112::CreateF112(QStandardItemModel * model, QModelIndex current_index, boo
         delete sheets;
         delete workbook;
         delete workbooks;
+
+        model->setItem(current_index.row(), model->columnCount() - 1 , new QStandardItem(QObject::tr("Напечатан")));
     }
 }
 

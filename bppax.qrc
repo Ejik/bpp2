@@ -6,6 +6,7 @@
         <file>res/help.ico</file>
         <file>res/info.ico</file>
         <file>res/excel.ico</file>
+        <file>res/qt_ru.qm</file>
         <file>template.xls</file>
     </qresource>
 </RCC>

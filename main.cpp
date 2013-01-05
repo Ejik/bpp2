@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QStandardItemModel>
 #include <QTextCodec>
+#include <QTranslator>
 #include "importer.h"
 
 int main(int argc, char *argv[])
@@ -13,6 +14,13 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     // Setting the Application version
     a.setApplicationVersion(APP_VERSION);
+
+    //
+    QTranslator *qt_translator = new QTranslator;
+    if ( qt_translator->load( ":bpp/res/qt_ru.qm" ) )
+    {
+        a.installTranslator( qt_translator );
+    }
 
     Importer importer;
     QStandardItemModel *model = importer.ImportData();

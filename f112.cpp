@@ -112,6 +112,9 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     QString from = data.value(QObject::tr("От кого(ФИОТБНполн)"));
     QString orgname = data.value(QObject::tr("НазвОрг"));
     QString summa_propisu = data.value(QObject::tr("Сумма прописью"));
+    QString org_index = data.value(QObject::tr("ИндексОрг"));
+    QString org_address = data.value(QObject::tr("АдресОрг"));
+    QString message = data.value(QObject::tr("Сообщение"));
 
     SetCellValue(sheet1, 23, 30, summa_propisu);
 
@@ -123,33 +126,30 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
 
     SetCellValue(sheet1, 34, 36, orgname);
 
-    QString index = data.value(QObject::tr("ИндексОрг"));
     for (int i = 0; i < 6; i++) // Индекс
     {
-        SetCellValue(sheet1, 34, 68 + i, QString(index[i]));
+        SetCellValue(sheet1, 34, 68 + i, QString(org_index[i]));
     }
 
-    SetCellValue(sheet1, 63, 30, data.value(QObject::tr("АдресОрг")));
+    SetCellValue(sheet1, 63, 30, org_address);
 
-
-    QString msg = data.value(QObject::tr("Сообщение"));
     int i = 0;
     bool at_end = false;
 
     // Разбивка по строкам сообщения
     while ((i < 33) && (at_end == false))
     {
-        at_end = (i == msg.length() - 1);
+        at_end = (i == message.length() - 1);
 
-        SetCellValue(sheet1, 69, 41 + i, QString(msg[i]));
+        SetCellValue(sheet1, 69, 41 + i, QString(message[i]));
         i++;
     }
 
     int j = i;
     i = 0;
-    while (i < msg.length() - 1)
+    while (i < message.length() - 1)
     {
-        SetCellValue(sheet1, 73, 37 + i, QString(msg[j]));
+        SetCellValue(sheet1, 73, 37 + i, QString(message[j]));
         i++;  j++;
     }
 
@@ -158,6 +158,7 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     SetCellValue(sheet2, 13, 107, n_sum); // сумма
     SetCellValue(sheet2, 13, 120, QString::number(dn_sum, 'f', 0)); // копейки
 
+    // от кого
     int surname_idx = from.indexOf(" ");
     QString surname = from.left(surname_idx);
     SetCellValue(sheet2, 17, 100, surname);
@@ -165,16 +166,37 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
 
     SetCellValue(sheet2, 33, 14, summa_propisu);
 
+    // кому
     surname_idx = who.indexOf(" ");
     surname = who.left(surname_idx);
     SetCellValue(sheet2, 38, 12, surname);
     SetCellValue(sheet2, 42, 4, who.right(who.length() - surname_idx));
 
 
+    // адрес отправителя
+    SetCellValue(sheet2, 36, 111, org_index);
+
+    SetCellValue(sheet2, 39, 90, org_address.left(20));
+    if (org_address.length() > 20)
+        SetCellValue(sheet2, 42, 90, org_address.right(org_address.length() - 20));
+
+    //
     new_filename_ = QDir::toNativeSeparators(current_dir + "/" + from + ".xls");
     workbook->querySubObject("SaveAs (const QString&)", new_filename_);
 
-    //временно
+    int msg_length = message.length();
+
+    SetCellValue(sheet2, 60, 103, message.left(20));
+    if (msg_length > 20)
+        SetCellValue(sheet2, 62, 90, message.mid(20, 30));
+    if (msg_length > 50)
+        SetCellValue(sheet2, 65, 90, message.mid(50, 30));
+    if (msg_length > 80)
+        SetCellValue(sheet2, 68, 90, message.mid(80, 30));
+    if (msg_length > 110)
+        SetCellValue(sheet2, 73, 90, message.mid(110, 30));
+
+        //временно
     //workbook->dynamicCall("Close (Boolean)", true);
     //excel_->dynamicCall("Quit (void)");
 

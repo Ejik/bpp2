@@ -148,11 +148,11 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     bool at_end = false;
 
     // Разбивка по строкам сообщения
-    while ((i < 33) && (at_end == false))
+    while ((i < 37) && (at_end == false))
     {
         at_end = (i == message.length() - 1);
 
-        SetCellValue(sheet1, 69, 41 + i, QString(message[i]));
+        SetCellValue(sheet1, 69, 37 + i, QString(message[i]));
         i++;
     }
 
@@ -160,7 +160,7 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     i = 0;
     while (i < message.length() - 1)
     {
-        SetCellValue(sheet1, 73, 37 + i, QString(message[j]));
+        SetCellValue(sheet1, 73, 31 + i, QString(message[j]));
         i++;  j++;
     }
 

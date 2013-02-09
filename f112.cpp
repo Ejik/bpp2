@@ -71,15 +71,15 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     QFile f_template(":/bpp/template.xls");
     f_template.copy(QDir::toNativeSeparators(tmp_file_path));
 
-    try
-    {
+//    try
+//    {
         excel_ = new QAxObject( "Excel.Application", 0 );
-    }
-    catch (...)
-    {
-            QMessageBox::information(0, QObject::tr("Ошибка при подключении к MS Excel."), QObject::tr("Проверьте установлен ли Excel в системе."));
-            qDebug() << "Error in new QAxObject( Excel.Application, 0 )";
-    }
+//    }
+//    catch (...)
+//    {
+//            QMessageBox::information(0, QObject::tr("Ошибка при подключении к MS Excel."), QObject::tr("Проверьте установлен ли Excel в системе."));
+//            qDebug() << "Error in new QAxObject( Excel.Application, 0 )";
+//    }
 
     QAxObject* workbooks = excel_->querySubObject( "Workbooks" );
     QAxObject* workbook = workbooks->querySubObject( "Open(const QString&)", tmp_file_path );

@@ -17,7 +17,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "ACOT"
             VALUE "FileDescription", "Печать бланков почтовых переводов"
-            VALUE "FileVersion", "2.0.0.18"
+            VALUE "FileVersion", "2.0.0.19"
             VALUE "LegalCopyright", "Чумак Сергей Николаевич"
             VALUE "InternalName", "bpp.exe"
             VALUE "OriginalFilename", "bpp.exe"

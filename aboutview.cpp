@@ -13,7 +13,7 @@ AboutView::AboutView(QWidget *parent) :
     QString ver = QApplication::applicationVersion();
 
     QString s1 = tr("Печать бланков почтовых переводов (версия ") + ver + ")";
-    QString s2 = "<a href='mailto:acotwin@gmail.com?subject=bpp.exe(" + ver + ")'>" + tr("Задать вопрос") + "</a>";
+    QString s2 = "<a href='mailto:chumak@yaroslavl.ru?subject=bpp.exe(" + ver + ")'>" + tr("Задать вопрос") + "</a>";
 
     ui->label_version->setText(s1);
 

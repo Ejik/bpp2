@@ -9,7 +9,6 @@
 
 int main(int argc, char *argv[])
 {
-    //Q_IMPORT_PLUGIN( qjpeg );
     Q_IMPORT_PLUGIN(qico);
 
     QTextCodec *codec = QTextCodec::codecForName("UTF-8");

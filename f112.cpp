@@ -126,6 +126,12 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     QString org_index = data.value(QObject::tr("ИндексОрг"));
     QString org_address = data.value(QObject::tr("АдресОрг"));
     QString message = data.value(QObject::tr("Сообщение"));
+    QString inn = data.value(QObject::tr("ИНН"));
+    QString kor_schet = data.value(QObject::tr("КорСчет"));
+    QString naim_bank = data.value(QObject::tr("НаимБанк"));
+    QString ras_schet = data.value(QObject::tr("РасСчет"));
+    QString bik = data.value(QObject::tr("БИК"));
+    QString ogrn = data.value(QObject::tr("ОГРН"));
 
     SetCellValue(sheet1, 23, 30, summa_propisu);
 
@@ -140,6 +146,33 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     for (int i = 0; i < 6; i++) // Индекс
     {
         SetCellValue(sheet1, 34, 68 + i, QString(org_index[i]));
+    }
+
+    for (int i = 0; i < 10; i++) // ИНН
+    {
+        SetCellValue(sheet1, 53, 35 + i , QString(inn[i]));
+    }
+
+    for (int i = 0; i < 20; i++) // Корсчет
+    {
+        SetCellValue(sheet1, 53, 54 + i , QString(kor_schet[i]));
+    }
+
+    SetCellValue(sheet1, 55, 44, naim_bank); // наименование банка
+
+    for (int i = 0; i < 20; i++) // Р/С
+    {
+        SetCellValue(sheet1, 58, 38 + i , QString(ras_schet[i]));
+    }
+
+    for (int i = 0; i < 20; i++) // БИК
+    {
+        SetCellValue(sheet1, 58, 65 + i , QString(bik[i]));
+    }
+
+    for (int i = 0; i < 15; i++) // ОГРН
+    {
+        SetCellValue(sheet1, 61, 36 + i , QString(ogrn[i]));
     }
 
     SetCellValue(sheet1, 63, 30, org_address);
@@ -207,7 +240,7 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     if (msg_length > 110)
         SetCellValue(sheet2, 73, 90, message.mid(110, 30));
 
-        //временно
+    //временно
     //workbook->dynamicCall("Close (Boolean)", true);
     //excel_->dynamicCall("Quit (void)");
 

@@ -12,7 +12,7 @@ TARGET = bpp2
 TEMPLATE = app
 
 # The application version
-VERSION = 2.0.0.22
+VERSION = 2.0.0.23
 
 # Define the preprocessor macro to get the application version in our application.
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"

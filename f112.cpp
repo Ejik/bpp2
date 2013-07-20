@@ -109,13 +109,13 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
     // Заполнение шаблона
     bool ok;
     QString summa = data.value(QObject::tr("Сумма"));
-    //summa.replace(".", ",");
-    double d_sum = summa.toDouble(&ok);
-    int n_sum = int(d_sum);
-    int dn_sum = int(100 * (d_sum - n_sum));
+    QStringList suminfo = summa.split(".");
+//    double d_sum = summa.toDouble(&ok);
+//    int n_sum = int(d_sum);
+//    int dn_sum = int(100 * (d_sum - n_sum));
 
-    SetCellValue(sheet1, 20, 51, n_sum); // сумма
-    SetCellValue(sheet1, 20, 65, QString::number(dn_sum, 'f', 0)); // копейки
+    SetCellValue(sheet1, 20, 51, suminfo[0]); // сумма
+    SetCellValue(sheet1, 20, 65, suminfo[1]); // копейки
 
 
 
@@ -199,8 +199,8 @@ void F112::CreateBlank(QStandardItemModel *model, QModelIndex current_index)
 
     // Страница 2
 
-    SetCellValue(sheet2, 13, 107, n_sum); // сумма
-    SetCellValue(sheet2, 13, 120, QString::number(dn_sum, 'f', 0)); // копейки
+    SetCellValue(sheet2, 13, 107, suminfo[0]); // сумма
+    SetCellValue(sheet2, 13, 120, suminfo[1]); // копейки
 
     // от кого
     int surname_idx = from.indexOf(" ");
